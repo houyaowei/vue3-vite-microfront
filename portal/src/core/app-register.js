@@ -56,7 +56,7 @@ function registerApps(){
     })
     //设置默认应用
     if (defaultApp) {
-        // setDefaultMountApp(defaultApp + '/')
+        setDefaultMountApp(defaultApp + '/')
     }
     //启动应用
     start({ prefetch: true });

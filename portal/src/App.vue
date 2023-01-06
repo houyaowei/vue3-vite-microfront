@@ -1,6 +1,9 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+function goToPage(app) {
+  history.pushState(null, app, app);
+}
 </script>
 
 <template>
@@ -10,12 +13,14 @@ import HelloWorld from './components/HelloWorld.vue'
     <div class="wrapper">
       <HelloWorld msg="Portal" />
       <nav>
-        <RouterLink to="/app1">App1</RouterLink>
-        <RouterLink to="/app2">App2</RouterLink>
+        <!-- <RouterLink to="/app1">App1</RouterLink>
+        <RouterLink to="/app2">App2</RouterLink> -->
+        <div style="color: hsla(160, 100%, 37%, 1); cursor: pointer;" @click="goToPage('/app1')">切换到App1</div>
+        <div style="color: hsla(160, 100%, 37%, 1);cursor: pointer;" @click="goToPage('/app2')">切换到App2</div>
       </nav>
     </div>
   </header>
-  <RouterView />
+  <!-- <RouterView /> -->
   <div>
     <div id="app"></div>
     <div id="sub-app-viewport"></div>
