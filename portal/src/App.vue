@@ -9,16 +9,17 @@ import HelloWorld from './components/HelloWorld.vue'
 
     <div class="wrapper">
       <HelloWorld msg="Portal" />
-
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
+        <RouterLink to="/app1">App1</RouterLink>
+        <RouterLink to="/app2">App2</RouterLink>
       </nav>
     </div>
   </header>
-
   <RouterView />
-  
+  <div>
+    <div id="app"></div>
+    <div id="sub-app-viewport"></div>
+  </div>
 </template>
 
 <style scoped>

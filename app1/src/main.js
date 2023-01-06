@@ -11,32 +11,41 @@ app.use(createPinia())
 /**
  * @name 导出微应用生命周期
  */
-//  const { bootstrap, mount, unmount } = lifeCycle();
-//  export { bootstrap, mount, unmount };
 let router = null;
-const render = ({container } = {}) => {
-    console.log("window.__POWERED_BY_QIANKUN__:",qiankunWindow.__POWERED_BY_QIANKUN__)
-    const base = qiankunWindow.__POWERED_BY_QIANKUN__ ? '/app1' : '/';
-    router = createRouter({
-      history:createWebHistory(base),
-      routes,
-    });
-    app.use(router)
-    app.mount('#app')
-  };
+let history = null
+
+//vue的通用render方法
+const render = ({ routerBase } = {}) => {
+  console.log("render fun")
+  const base = qiankunWindow.__POWERED_BY_QIANKUN__ ? routerBase : '/';
+  history = createWebHistory(base);
+
+  router = createRouter({
+    history,
+    routes,
+  });
+  app.use(router)
+  app.mount('#app')
+  if( qiankunWindow.__POWERED_BY_QIANKUN__ ) {
+    console.log("load in qiankun environment ")
+  }
+};
+
  renderWithQiankun({
     mount(props) {
-        console.log("vite app mount");
-        render(props);
+      console.log("app1 mount， props are:", props);
+      render(props);
     },
     bootstrap() {
       console.log('bootstrap');
     },
     unmount(props) {
-        console.log("vite被卸载了");
+        console.log("app1 unmounted");
         app.unmount();
-        a[[]]._container.innerHTML = '';
+        app._container.innerHTML = '';
         history.destroy();
+        router = null;
+        history = null;
     },
   });
  /**

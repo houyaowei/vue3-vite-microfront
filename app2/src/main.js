@@ -8,17 +8,14 @@ import { renderWithQiankun, qiankunWindow } from 'vite-plugin-qiankun/dist/helpe
 const app = createApp(App)
 app.use(createPinia())
 
-/**
- * @name 导出微应用生命周期
- */
-//  const { bootstrap, mount, unmount } = lifeCycle();
-//  export { bootstrap, mount, unmount };
 let router = null;
-const render = ({container } = {}) => {
+let history = null;
+const render = ({routerBase } = {}) => {
     console.log("window.__POWERED_BY_QIANKUN__:",qiankunWindow.__POWERED_BY_QIANKUN__)
-    const base = qiankunWindow.__POWERED_BY_QIANKUN__ ? '/app2' : '/';
+    const base = qiankunWindow.__POWERED_BY_QIANKUN__ ? routerBase : '/';
+    history = createWebHistory(base);
     router = createRouter({
-      history:createWebHistory(base),
+      history,
       routes,
     });
     app.use(router)
@@ -26,17 +23,19 @@ const render = ({container } = {}) => {
   };
  renderWithQiankun({
     mount(props) {
-        console.log("vite app mount");
-        render(props);
+      console.log("app2 mount");
+      render(props);
     },
     bootstrap() {
       console.log('bootstrap');
     },
     unmount(props) {
-        console.log("vite被卸载了");
-        app.unmount();
-        a[[]]._container.innerHTML = '';
-        history.destroy();
+      console.log("app2 unmount");
+      app.unmount();
+      app._container.innerHTML = '';
+      history.destroy();
+      router = null;
+      history = null;
     },
   });
  /**

@@ -2,6 +2,9 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import qiankun from 'vite-plugin-qiankun';
+const { name } = require('./package');
+
+
 const useDevMode = true 
 // https://vitejs.dev/config/
 export default ({ mode }) => {
@@ -27,9 +30,9 @@ export default ({ mode }) => {
       outDir: "app1"
     },
     output: {
-      library: `app1-app1`,
+      library: `${name}-${name}`,
       libraryTarget: 'umd',
-      jsonpFunction: `webpackJsonp_app1`,
+      jsonpFunction: `webpackJsonp_${name}`,
     }
   })
 }
