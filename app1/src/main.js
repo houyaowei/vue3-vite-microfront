@@ -4,7 +4,7 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import routes from './router'
 import { renderWithQiankun, qiankunWindow } from 'vite-plugin-qiankun/dist/helper';
-
+import subAppStore from "./app-store"
 
 
 /**
@@ -14,7 +14,7 @@ let router = null;
 let history = null
 let app = null;
 //vue的通用render方法
-const render = ({ routerBase } = {}) => {
+const render = ({ routerBase,container } = {}) => {
   console.log("render fun")
   app = createApp(App)
   app.use(createPinia())
@@ -35,6 +35,8 @@ const render = ({ routerBase } = {}) => {
  renderWithQiankun({
     mount(props) {
       console.log("app1 mount， props are:", props);
+      
+      subAppStore(props)
       render(props);
     },
     bootstrap() {
