@@ -4,7 +4,6 @@ import vue from '@vitejs/plugin-vue'
 import qiankun from 'vite-plugin-qiankun';
 const { name } = require('./package');
 
-
 const useDevMode = true 
 // https://vitejs.dev/config/
 export default ({ mode }) => {
@@ -21,18 +20,13 @@ export default ({ mode }) => {
         '@': fileURLToPath(new URL('./src', import.meta.url))
       }
     },
-    base: isDev ? '/' : '/',
+    base: isDev ? '/' : '/app1',
     server: {
       port: 5174
     },
     build: {
       target: "esnext",
       outDir: "app1"
-    },
-    output: {
-      library: `${name}-${name}`,
-      libraryTarget: 'umd',
-      jsonpFunction: `webpackJsonp_${name}`,
     }
   })
 }

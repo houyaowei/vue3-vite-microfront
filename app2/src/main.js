@@ -4,7 +4,7 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import routes from './router'
 import { renderWithQiankun, qiankunWindow } from 'vite-plugin-qiankun/dist/helper';
-
+import pkg from "../package.json"
 
 
 let router = null;
@@ -14,7 +14,7 @@ const render = ({routerBase } = {}) => {
     console.log("window.__POWERED_BY_QIANKUN__:",qiankunWindow.__POWERED_BY_QIANKUN__)
     app = createApp(App)
     app.use(createPinia())
-    const base = qiankunWindow.__POWERED_BY_QIANKUN__ ? routerBase : '/';
+    const base = qiankunWindow.__POWERED_BY_QIANKUN__ ? '/' + pkg.name + '/' : '/';
     history = createWebHistory(base);
     router = createRouter({
       history,

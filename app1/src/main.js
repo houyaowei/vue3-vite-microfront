@@ -5,8 +5,7 @@ import App from './App.vue'
 import routes from './router'
 import { renderWithQiankun, qiankunWindow } from 'vite-plugin-qiankun/dist/helper';
 import subAppStore from "./app-store"
-
-
+import pkg from "../package.json"
 /**
  * @name 导出微应用生命周期
  */
@@ -15,10 +14,10 @@ let history = null
 let app = null;
 //vue的通用render方法
 const render = ({ routerBase,container } = {}) => {
-  console.log("render fun")
+  console.log("app1 __POWERED_BY_QIANKUN__:",qiankunWindow.__POWERED_BY_QIANKUN__ )
   app = createApp(App)
   app.use(createPinia())
-  const base = qiankunWindow.__POWERED_BY_QIANKUN__ ? routerBase : '/';
+  const base = qiankunWindow.__POWERED_BY_QIANKUN__ ? '/' + pkg.name + '/' : '/';
   history = createWebHistory(base);
 
   router = createRouter({

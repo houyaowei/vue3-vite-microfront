@@ -27,7 +27,7 @@ function sendMessage() {
         <!-- <RouterLink to="/app1">App1</RouterLink>
         <RouterLink to="/app2">App2</RouterLink> -->
         <div style="color: hsla(160, 100%, 37%, 1); cursor: pointer;" @click="goToPage('/app1')">切换到App1</div>
-        <div style="color: hsla(160, 100%, 37%, 1);cursor: pointer;" @click="goToPage('/dm-web-tags')">切换到App2</div>
+        <div style="color: hsla(160, 100%, 37%, 1);cursor: pointer;" @click="goToPage('/app2')">切换到App2</div>
         <div style="color: hsla(160, 100%, 37%, 1);cursor: pointer;" @click="sendMessage">消息通知</div>
       </nav>
     </div>

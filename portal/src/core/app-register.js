@@ -4,6 +4,7 @@
 //子应用挂载点,子应用会挂载到这个DOM节点上
 const appContainer = "#sub-app-viewport";
 
+
 import {
     start,
     registerMicroApps,
@@ -62,7 +63,7 @@ function registerApps(){
     //启动应用
     start({ prefetch: true });
     //启用消息通信
-    appStore()
+    // appStore()
 
     runAfterFirstMounted((app) => {
         console.log('runAfterFirstMounted:', app)

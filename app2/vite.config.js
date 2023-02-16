@@ -12,25 +12,20 @@ export default ({ mode }) => {
   const env=loadEnv(mode, process.cwd());
 
   return defineConfig({
-    plugins: [vue(),qiankun("app1",{useDevMode })],
+    plugins: [vue(),qiankun("app2",{useDevMode })],
     resolve: {
       extensions: [".mjs", ".js", ".jsx", ".json", ".vue"],
       alias: {
         '@': fileURLToPath(new URL('./src', import.meta.url))
       }
     },
-    base: isDev ? '/' : '/',
+    base: isDev ? '/' : '/app2',
     server: {
       port: 5175
     },
     build: {
       target: "esnext",
       outDir: "app2"
-    },
-    output: {
-      library: `app2-app2`,
-      libraryTarget: 'umd',
-      jsonpFunction: `webpackJsonp_app2`,
     }
   })
 }

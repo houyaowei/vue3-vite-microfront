@@ -4,18 +4,33 @@
  * activeRule也同name
  * container统一设置为#app
  */
-export const config = [
-    {
-        defaultLoad: true,
-        name: 'app1',
-        url: 'http://localhost:5174'
-    },
-    {
-        name: 'app2',
-        url: 'http://localhost:5175'
-    },
-    {
-        name: 'dm-web-tags',
-        url: 'http://localhost:5176'
-    }
-]
+const isDev = import.meta.env.VITE_ISDEV;
+let config = []
+
+if (isDev == 0) {
+    config = [
+        {
+            defaultLoad: true,
+            name: 'app1',
+            url: 'http://localhost:5174'
+        },
+        {
+            name: 'app2',
+            url: 'http://localhost:5175'
+        }
+    ]
+} else {
+    config = [
+        {
+            name: 'app1',
+            url: '/app1'
+        },
+        {
+            name: 'app2',
+            url: '/app2'
+        }
+    ]
+}
+export {
+    config
+}
