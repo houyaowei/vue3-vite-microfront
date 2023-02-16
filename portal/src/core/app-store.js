@@ -6,6 +6,8 @@ import { useCounterStore } from '../stores/counter'
 import { initGlobalState } from 'qiankun'
 const store = useCounterStore()
 
+const setGlobalState = {}
+
 const appStore = ()=>{
     let state = {
         data: '',
@@ -30,5 +32,9 @@ const appStore = ()=>{
             name: 'admin',
         }
     });
+    setGlobalState = setGlobalState
 }
-export default  appStore;
+export {
+    appStore,
+    setGlobalState
+} ;

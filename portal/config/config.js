@@ -13,5 +13,9 @@ export const config = [
     {
         name: 'app2',
         url: 'http://localhost:5175'
+    },
+    {
+        name: 'dm-web-tags',
+        url: 'http://localhost:5176'
     }
 ]

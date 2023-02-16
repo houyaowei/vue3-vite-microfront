@@ -1,8 +1,19 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+// import { setGlobalState }  from "./core/app-store"
+import actions from "./core/shareActions"
+
 function goToPage(app) {
   history.pushState(null, app, app);
+}
+function sendMessage() {
+  actions.setGlobalState({
+    from: 'app.vue',
+    user: {
+        name: 'app vue admin',
+    }
+  })
 }
 </script>
 
@@ -12,11 +23,12 @@ function goToPage(app) {
 
     <div class="wrapper">
       <HelloWorld msg="Portal" />
-      <nav>
+      <nav >
         <!-- <RouterLink to="/app1">App1</RouterLink>
         <RouterLink to="/app2">App2</RouterLink> -->
         <div style="color: hsla(160, 100%, 37%, 1); cursor: pointer;" @click="goToPage('/app1')">切换到App1</div>
-        <div style="color: hsla(160, 100%, 37%, 1);cursor: pointer;" @click="goToPage('/app2')">切换到App2</div>
+        <div style="color: hsla(160, 100%, 37%, 1);cursor: pointer;" @click="goToPage('/dm-web-tags')">切换到App2</div>
+        <div style="color: hsla(160, 100%, 37%, 1);cursor: pointer;" @click="sendMessage">消息通知</div>
       </nav>
     </div>
   </header>

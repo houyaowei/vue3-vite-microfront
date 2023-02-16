@@ -12,7 +12,8 @@ import {
     initGlobalState
 } from 'qiankun'
 import { config } from '../../config/config'
-import appStore from './app-store'
+// import { appStore } from './app-store'
+import actions from "./shareActions"
 
 // 主应用渲染函数
 let app = null;
