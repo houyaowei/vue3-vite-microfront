@@ -20,7 +20,7 @@ export default ({ mode }) => {
         '@': fileURLToPath(new URL('./src', import.meta.url))
       }
     },
-    base: isDev ? '/' : '/app1',
+    base: isDev ? '/' : `/${name}`,
     server: {
       port: 5174
     },
